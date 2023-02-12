@@ -43,7 +43,7 @@ const firebaseConfig = {
       })
   })
   function sendMessage(e) {
-  
+    console.log('k')
     // get values to be submitted
     const timestamp = Date.now();
     const messageInput = document.getElementById("message-input");
@@ -70,14 +70,14 @@ const firebaseConfig = {
 
   function fetchit(){
       const fetchChat = db.ref(`messages/${username}/${userid}`);
-  
       fetchChat.on("child_added", function (snapshot) {
         const messages = snapshot.val();
         console.log(messages)
         const message = `<li class=${
           username === messages.username ? "chat__bubble--you" : "chat__bubble--me"
-        }><span>${messages.username}: </span>${messages.message}</li>`;
+        }><span>${messages.userid}: </span>${messages.message}</li>`;
         // append the message on the page
         document.getElementById("messages").innerHTML += message;
       });
+      // kakk
   }
